@@ -1,7 +1,10 @@
-search_term_clustering
+search term clustering
 ===
+
+
 # introduction
 code for a coding challenge accompanying a job application. the task is to build a model to predict which category an unseen search term belongs, using a labelled data set mapping many search terms and their categories. 
+
 
 # how-to:
 get you copy from github and then generate `data/` and `models/` folders (not included in this repo), and then populate these with input data from `s3`:
@@ -24,7 +27,8 @@ cd src/
 python run.py
 ```
 
-read on for details. additionally, you might want to explore the jupyter notebooks that explain the experimentation process. 
+read on for details. additionally, you might want to explore the jupyter notebooks (via `pipenv run jupyter-lab`) that explain the experimentation process. 
+
 
 # solution overview:
 - exploratory phase:
@@ -42,13 +46,16 @@ read on for details. additionally, you might want to explore the jupyter noteboo
 	+ run tuned, retrained model on provided unlabelled data
 - speculate about improvements
 
+
 # data
+
 ## input
 - remote training data: `https://s3-eu-west-1.amazonaws.com/adthena-ds-test/trainSet.csv`
 - remote unlabelled data: `https://s3-eu-west-1.amazonaws.com/adthena-ds-test/candidateTestSet.txt`
 - fetch remote data using `src/fetch_data.sh` which 
 	+ creates the `data` folder and relevant subfolders
 	+ then copies remote data to `data/raw/`
+
 ## data products
 - labelled data split:
 	+ `data/processed/train.csv`
@@ -59,6 +66,7 @@ read on for details. additionally, you might want to explore the jupyter noteboo
 - `output/candidateTestSet_with_categories.csv`
 - see also model object: `models/final_model_object.pckl`
 - and `tf-idf` preprocessing object: `models/preprocessing.pckl`
+
 
 # code overview
 ## python scripts
@@ -77,6 +85,7 @@ read on for details. additionally, you might want to explore the jupyter noteboo
 	+ naive bayes: ``
 - model tuning:
 
+
 # method
 the method demonstrated here is, in short:
 
@@ -86,6 +95,7 @@ the method demonstrated here is, in short:
 - determine the best model, and optimise its hyperparameters.
 - retrain optimal model parameters on the full input data 
 - apply resulting full, optimal model to unlabelled data. 
+
 
 # results
 the performance of the resulting model is useful but not great. this is unsurprising given that:
@@ -109,6 +119,7 @@ considering that not all misclassifications are equally bad (categories may over
 another path forward could be to reduce the feature dimensionality of the `tfidf` vectorized features, reducing time and memory needed for the training and evaluation of the models. 
 
 finally, considering the task complexity, high dimensionality of features, and large set of labelled data, this task is a candidate for deep learning solutions, though i have not attempted any of those here. 
+
 
 # project organization
 ---
@@ -143,6 +154,7 @@ finally, considering the task complexity, high dimensionality of features, and l
     │   ├── utilities.py   <- useful utility functions
 
 ---
+
 
 # ps
 ## lessons learned
