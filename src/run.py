@@ -5,7 +5,7 @@ import pickle
 import time
 
 input_data_filepath   = '../data/raw/trainSet.csv'
-new_data_filepath     = '../raw/candidateTestSet.csv'
+new_data_filepath     = '../data/raw/candidateTestSet.csv'
 model_filepath        = '../models/final_model_object.pckl'
 preprocessor_filepath = '../models/preprocessor_object.pckl'
 
