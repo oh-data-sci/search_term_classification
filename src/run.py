@@ -6,8 +6,8 @@ import time
 
 input_data_filepath   = '../data/raw/trainSet.csv'
 new_data_filepath     = '../raw/candidateTestSet.csv'
-model_filepath        = '../models/models/final_model_object.pckl'
-preprocessor_filepath = '../models/models/preprocessor_object.pckl'
+model_filepath        = '../models/final_model_object.pckl'
+preprocessor_filepath = '../models/preprocessor_object.pckl'
 
 output_prediction_filepath = '../output/candidateTestSet_with_categories.csv'
 

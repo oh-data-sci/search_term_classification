@@ -3,13 +3,36 @@ search_term_clustering
 # introduction
 code for a coding challenge accompanying a job application. the task is to build a model to predict which category an unseen search term belongs, using a labelled data set mapping many search terms and their categories. 
 
+# how-to:
+get you copy from github and then generate `data/` and `models/` folders (not included in this repo), and then populate these with input data from `s3`:
+```
+git clone https://github.com/oh-data-sci/search_term_classification
+cd search_term_classification
+./setup_folders.sh
+```
+the model's output on holdout data should be in the `output/` folder. to produce the model output, it should be enough to
+
+- 1) set up your python environment with `pipenv`
+- 2) launch a pipenv shell
+- 3) execute the python script `run.py` from within the `src/` folder. 
+```
+pipenv install
+```
+```
+pipenv shell
+cd src/
+python run.py
+```
+
+read on for details. additionally, you might want to explore the jupyter notebooks that explain the experimentation process. 
+
 # solution overview:
 - exploratory phase:
-	+ establish the labelled search term vocabulary
+	+ establish a search term vocabulary from the labelled data. 
 	+ estimate coverage of labelled data compare unlabelled set vocabulary. 
 	+ confirm that training set has a feasible handle on the problem space
 - data preparation phase:
-	+ determine data is clean
+	+ determine data is clean (all lowercase, all punctuation-free, etc.)
 	+ split data up into testing and training data
 - model building phase:
 	+ experiment with a handful of (inherently multiclass) classification algorithms
@@ -35,7 +58,7 @@ code for a coding challenge accompanying a job application. the task is to build
 ## results
 - `output/candidateTestSet_with_categories.csv`
 - see also model object: `models/final_model_object.pckl`
-- and tf-idf preprocessing object:
+- and `tf-idf` preprocessing object: `models/preprocessing.pckl`
 
 # code overview
 ## python scripts
