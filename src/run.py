@@ -28,5 +28,5 @@ if __name__ == "__main__":
         
     # fetch unlabelled data, add computed predictions, output to file:
     df_new = pd.read_csv(new_data_filepath, header=None, names=['query'])
-    df_new['category_predicted'] = predictions_from_model(trained_model, preprocessor, df_new)
+    df_new['category_predicted'] = predictions_from_model(trained_model, preprocessor, df_new['query'])
     df_new.to_csv(output_prediction_filepath, index=False)
